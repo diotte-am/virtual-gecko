@@ -41,6 +41,10 @@ export class GameManager {
         }
     }
 
+    renderUI() {
+
+    }
+
     stop() {
         clearInterval(this.gameInterval);
         console.log("Game loop terminated. Goodbye.");
