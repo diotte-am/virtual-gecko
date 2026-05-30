@@ -1,6 +1,6 @@
-import { Gecko } from "./Gecko";
-import { Environment } from "./Environment";
-import { Actions } from "./Actions";
+import { Gecko } from "./Gecko.js";
+import { Environment } from "./Environment.js";
+import { Actions } from "./Actions.js";
 
 export class GameManager {
     constructor() {

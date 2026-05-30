@@ -1,4 +1,4 @@
-import { LightSource } from "./LightSource"
+import { LightSource } from "./LightSource.js"
 
 export class Environment {
     constructor() {
