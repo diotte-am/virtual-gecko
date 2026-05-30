@@ -12,34 +12,27 @@ export class Gecko {
         }
         
         // Decay rates
-        this.baseDecays = {
+        this.decays = {
             food : 1,
             interest : 0.5,
-            warmth : 2
-        }
-
-         // Decay rates
-        this.secondaryDecays = {
+            warmth : 2,
             hp : 1.5,
             mood : 0.5
         }
+
+        this.pos = {
+            x: 50, // percentage of screen width
+            y: 80
+        };
         
 
     }
-
-    tick(temperatureModifier){
-        if (!this.isHome) return;
-        Object.entries(this.baseDecays).forEach(([statName, decayValue]) => {
-            this.stats[statName] -= decayValue;
-        })
-
-        this.stats.warmth = Math.min(100, this.stats.warmth + temperatureModifier);
-        this.updateInternalState();
-
-    }
     
-    updateInternalState(){
+    updateInternalState(temperatureModifier){
         const { hp, mood, food, interest, warmth } = this.stats;
+        if (!this.isHome) return;
+        warmth += temperatureModifier;
+
         if (food <= 0) {
             console.log(`${this.name} is awfully hungry.`);
             this.stats.hp -= this.secondaryDecays.hp;
