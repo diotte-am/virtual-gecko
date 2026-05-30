@@ -1,7 +1,4 @@
-import './style.css'
 import { GameManager } from './js/GameManger';
-
-document.querySelector('#app').innerHTML = "Gecko";
 
 const game = new GameManager();
 game.start();
