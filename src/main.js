@@ -1,4 +1,4 @@
-import { GameManager } from './GameManager'
+import { GameManager } from './js/GameManager'
 
 const game = new GameManager();
 game.start();
