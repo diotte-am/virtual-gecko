@@ -29,7 +29,7 @@ export class Gecko {
     }
     
     updateInternalState(temperatureModifier){
-        const { hp, mood, food, interest, warmth } = this.stats;
+        let { hp, mood, food, interest, warmth } = this.stats;
         if (!this.isHome) return;
         warmth += temperatureModifier;
 
