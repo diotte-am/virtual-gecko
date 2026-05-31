@@ -1,13 +1,8 @@
 import { GameManager } from './GameManager.js';
 
-// PHASE 1: Global Registration (Happens INSTANTLY on script load)
-let game; // Sits as undefined for a split second
-
-
-// PHASE 2: The Core Engine Ignition (Smart Conditional)
 function init() {
     console.log("🚀 Bootstrapping Virtual Gecko Engine...");
-    game = new GameManager(); // <-- This fills the 'let game' placeholder!
+    let game = new GameManager(); // <-- This fills the 'let game' placeholder!
     window.makePetAction = (actionKey) => {
     if (game) {
         game.handleAction(actionKey);
