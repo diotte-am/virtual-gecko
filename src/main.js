@@ -1,29 +1,28 @@
-import { GameManager } from './js/GameManager.js'
+import { GameManager } from './GameManager.js';
 
-// this will remain null until the game engine loads
-let game;
+// PHASE 1: Global Registration (Happens INSTANTLY on script load)
+let game; // Sits as undefined for a split second
 
 window.makePetAction = (actionKey) => {
-    // Safety check: only forward the action if the game engine has loaded
     if (game) {
         game.handleAction(actionKey);
     } else {
-        // If not ready, log a warning and set a timer to try again
         console.warn(`⏳ Engine not ready for "${actionKey}". Retrying in 200ms...`);
-        
-        setTimeout(() => {
-            window.makePetAction(actionKey); // The function calls itself!
-        }, 200); // 2
+        setTimeout(() => { window.makePetAction(actionKey); }, 200);
     }
 };
 
+// PHASE 2: The Core Engine Ignition (Smart Conditional)
 function init() {
-    
-    const game = new GameManager();
+    console.log("🚀 Bootstrapping Virtual Gecko Engine...");
+    game = new GameManager(); // <-- This fills the 'let game' placeholder!
     game.start();
     game.renderUI();
-
 }
 
- document.addEventListener('DOMContentLoaded', init);
-
+// PHASE 3: The Gatekeeper Check
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+} else {
+    init(); // Live Server bypasses the event listener and runs init() immediately here
+}
