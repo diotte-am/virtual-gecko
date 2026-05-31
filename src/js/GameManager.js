@@ -42,8 +42,25 @@ export class GameManager {
     }
 
     renderUI() {
+        if (!this.gecko.isHome) {
+        document.body.innerHTML = `<h1>💀 Game Over. Gordon left.</h1>`;
+            return;
+        }
 
+        const statKeys = ['food', 'interest', 'warmth', 'mood', 'hp'];
+
+        // Loop through the array to find the element and update it 
+        statKeys.forEach(key => {
+            const element = document.getElementById(`stat-${key}`);
+            const value = this.gecko.stats[key];
+
+            if (element && value !== undefined) {
+                element.textContent = value.toFixed(0);
+            }
+        });
     }
+
+    
 
     stop() {
         clearInterval(this.gameInterval);
