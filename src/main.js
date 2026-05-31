@@ -1,4 +1,4 @@
-import { GameManager } from './GameManager.js';
+import { GameManager } from './js/GameManager.js';
 
 function init() {
     console.log("🚀 Bootstrapping Virtual Gecko Engine...");
