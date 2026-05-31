@@ -3,7 +3,12 @@ import { GameManager } from './GameManager.js';
 // PHASE 1: Global Registration (Happens INSTANTLY on script load)
 let game; // Sits as undefined for a split second
 
-window.makePetAction = (actionKey) => {
+
+// PHASE 2: The Core Engine Ignition (Smart Conditional)
+function init() {
+    console.log("🚀 Bootstrapping Virtual Gecko Engine...");
+    game = new GameManager(); // <-- This fills the 'let game' placeholder!
+    window.makePetAction = (actionKey) => {
     if (game) {
         game.handleAction(actionKey);
     } else {
@@ -12,10 +17,6 @@ window.makePetAction = (actionKey) => {
     }
 };
 
-// PHASE 2: The Core Engine Ignition (Smart Conditional)
-function init() {
-    console.log("🚀 Bootstrapping Virtual Gecko Engine...");
-    game = new GameManager(); // <-- This fills the 'let game' placeholder!
     game.start();
     game.renderUI();
 }
