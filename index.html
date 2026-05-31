@@ -3,11 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Virtual Gecko Test</title>
+    <title>Virtual Gecko Playground</title>
+    <style>
+        body { font-family: sans-serif; background: #222; color: #fff; padding: 20px; }
+        .dashboard { background: #333; padding: 15px; border-radius: 8px; max-width: 300px; margin-bottom: 20px; }
+        .stat { margin: 10px 0; font-size: 1.1rem; }
+        button { background: #4caf50; color: white; border: none; padding: 10px 15px; margin-right: 5px; border-radius: 4px; cursor: pointer; font-size: 1rem; }
+        button:hover { background: #45a049; }
+        button.lamp-btn { background: #ff9800; }
+        button.lamp-btn:hover { background: #e68a00; }
+    </style>
 </head>
 <body>
-    <h1>Check your Browser Developer Console (F12) to play!</h1>
 
-    <script type="module" src="./src/main.js"></script>
+    <h1>🦎 Gecko Monitor</h1>
+    
+    <div class="dashboard">
+        <div class="stat">Food: <span id="stat-food">-</span></div>
+        <div class="stat">Interest: <span id="stat-interest">-</span></div>
+        <div class="stat">Warmth: <span id="stat-warmth">-</span></div>
+        <div class="stat">Mood: <span id="stat-mood">-</span></div>
+        <div class="stat">HP: <span id="stat-hp">-</span></div>
+    </div>
+
+    <button onclick="makePetAction('feed')">🦗 Feed</button>
+    <button onclick="makePetAction('play')">🎯 Play</button>
+    <button class="lamp-btn" onclick="makePetAction('lamp')">💡 Toggle Lamp</button>
+
+    <script type="module" src="./src/js/main.js"></script>
 </body>
 </html>
